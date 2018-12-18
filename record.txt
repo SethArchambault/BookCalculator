@@ -1,4 +1,0 @@
-todays_date 12/17/2018 current_page  41 pages_i_just_read  2 avg_minutes_per_page 25.000000 done_date  1/31/2019
-todays_date 12/17/2018 current_page  48 pages_i_just_read  6 avg_minutes_per_page 11.000000 done_date  1/ 4/2019
-todays_date 12/17/2018 current_page  51 pages_i_just_read  2 avg_minutes_per_page 8.000000 done_date 12/30/2018
-todays_date 12/17/2018 current_page  56 pages_i_just_read  4 avg_minutes_per_page 6.000000 done_date 12/26/2018
