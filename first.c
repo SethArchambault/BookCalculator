@@ -1,3 +1,11 @@
+/*
+ * [ ] See my daily stats (pages per minute, done date, note about my energy level)
+ * [ ] See my weekly stats
+ * [ ] See my monthly stats
+ * [ ] See a graph of how things change
+ * [ ] Note where chapters begin
+ */
+
 #include <stdio.h>
 #include <time.h>
 #include <math.h>
@@ -19,7 +27,7 @@ int main() {
     {
         int total_pages                 = 199;
         float reading_hours_per_week    =  10;
-        int starting_page               =  71;
+        int starting_page               =  39;
         float reading_session_hours = 2.25;
         int progress[] = {
             39, 0, 31,
@@ -72,7 +80,22 @@ int main() {
             86, 0, 6,
             87, 0, 4,
             88, 0, 5,
-            89, 0, 7
+            89, 0, 7,
+            91, 0, 10, // day after birthday
+            92, 0, 11,
+            93, 11, 20,
+            94, 0, 17,
+            95, 0, 15,
+            96, 0, 5,
+            97, 0, 14,
+            98, 0, 6,
+            99, 0, 12,
+            100, 0, 6,
+            101, 0, 4,
+            102, 0, 3,
+            103, 0, 8,
+            104, 0, 6
+
         };
         int progress_length = sizeof(progress) / sizeof(int);
 
@@ -183,7 +206,7 @@ int main() {
         struct tm todays_date           = *localtime(&current_time);
         struct tm done_date             = *localtime(&current_time);
 
-        float weeks_remaining           = hours_remaining   / reading_hours_per_week;
+        float weeks_remaining           = (float)hours_remaining   / reading_hours_per_week;
         done_date.tm_mday              += weeks_remaining * 7;
         mktime(&done_date);
 
