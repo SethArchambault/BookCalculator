@@ -15,14 +15,19 @@
 #define MONTH_OFFSET 1
 #define YEAR_OFFSET 1900 
 
+void print_progress(int *progress) {
+    printf("page: %d \tstart_time: %d\t end_time %d\n", progress[0], progress[1], progress[2]);
+}
+
+
 int main() {
 
     // :input
     int total_pages                 = 199;
-    float reading_hours_per_week    =  10;
-    int starting_page               = 115; 
+    float reading_hours_per_week    =  5;
+    int starting_page               = 177; 
 //    float reading_session_hours     = 2.25;
-    float reading_session_hours     = 3.4;
+    float reading_session_hours     = 2.0;
     int progress[] = {
         39, 0, 31,
         40, 31, 41,
@@ -122,15 +127,56 @@ int main() {
         137, 0, 5,
         138, 5, 11,
         139, 0, 6,
-        140,0,7,
-        141,0,6,
-        142, 0,4,
-        143, 0, 5,
-        144, 0, 6
-
+        140, 0,  7,
+        141, 0,  6,
+        142, 0,  4,
+        143, 0,  5,
+        144, 0,  6,
+        145, 0,  5,
+        146, 0,  6,
+        147, 0,  5,
+        148, 0,  5,
+        149, 0,  5,
+        150, 0,  5,
+        151, 0,  5,
+        152, 0,  15,
+        159, 0,  4,
+        160, 0,  6,
+        161, 0,  6,
+        162, 6,  13,
+        163, 13, 20,
+        164, 20, 30,
+        165, 30, 36,
+        166, 36, 40,
+        167, 40, 49,
+        168, 49, 53,
+        170, 53, 56,
+        171, 0,  4,
+        172, 4,  9,
+        173, 9,  12,
+        174, 12, 16,
+        176, 16, 24,
+        177, 0, 4,
+        178, 0, 5,
+        179, 5, 9,
+        180, 9, 14,
+        181, 14, 19,
+        182, 19, 26,
+        183, 26, 31,
+        184, 31, 34,
+        185, 34, 38,
+        186, 0, 5,
+        187, 5, 15,
+        188, 15, 18,
+        189, 18, 21,
+        190, 21, 22,
+        191, 22, 24,
+        192, 0, 2,
+        193, 2, 6,
+        194, 6, 11
     };
-    // 18 pages remaining
-    int page_chapter_ends = 144;
+
+    int page_chapter_ends = 199;
 
     int pushups = {
         5
@@ -140,7 +186,7 @@ int main() {
         5
     };
 
-    int review = {
+    int review[] = {
         114, 14 // learned about tithe, and the jacobite war
     };
 
@@ -163,6 +209,8 @@ int main() {
         int start_time_index = progress_index + 1;
         int end_time_index = progress_index + 2;
         int time_took      = progress[end_time_index] - progress[start_time_index];
+        if (time_took < 0) print_progress(&progress[progress_index]);
+        assert(time_took > 0);
         reading_minutes   += time_took;
         if (time_took > max_minutes) max_minutes = time_took;
         if (time_took < min_minutes) min_minutes = time_took;
@@ -191,7 +239,7 @@ int main() {
 
     // :pages left, hours remaining
     int pages_left              = total_pages - current_page;
-    int hours_remaining         = pages_left  * (avg_minutes_per_page / 60);
+    float hours_remaining         = pages_left  * (avg_minutes_per_page / 60);
 
 
     // :generated done date, desired date
@@ -227,7 +275,7 @@ int main() {
         printf("Remaining pages in chapter:     %5d pages\n\n", pages_remaining_in_chapter);
         printf("Time remaining in chapter:   %5d:%02d \n\n", hours_remaining_in_chapter, minutes_remaining_in_chapter);
         printf("Remaining pages:                %5d pages\n\n", pages_left);
-        printf("Remaining hours:                %5d hours\n\n", hours_remaining);
+        printf("Remaining hours:                %5.2f hours\n\n", hours_remaining);
         printf("Every week I read for:          %5.2f hours\n\n", reading_hours_per_week);
         printf("Every reading session takes:    %5.2f hours\n\n",reading_session_hours);
         printf("Reading sessions remaining:     %5.1f Sessions\n\n",hours_remaining / reading_session_hours);
